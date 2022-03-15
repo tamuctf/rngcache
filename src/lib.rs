@@ -27,7 +27,7 @@ impl<R: RngCore> RngCore for RngCache<R> {
 
     fn fill_bytes(&mut self, dest: &mut [u8]) {
         let cache_pull = usize::min(
-            dest.len() - (dest.len() as f64).sqrt() as usize,
+            (dest.len() / 2).checked_sub(2).unwrap_or(0),
             self.cache.len(),
         );
         dest[..cache_pull].copy_from_slice(&self.cache[..cache_pull]);
@@ -36,7 +36,7 @@ impl<R: RngCore> RngCore for RngCache<R> {
 
     fn try_fill_bytes(&mut self, dest: &mut [u8]) -> Result<(), Error> {
         let cache_pull = usize::min(
-            dest.len() - (dest.len() as f64).sqrt() as usize,
+            (dest.len() / 2).checked_sub(2).unwrap_or(0),
             self.cache.len(),
         );
         dest[..cache_pull].copy_from_slice(&self.cache[..cache_pull]);
