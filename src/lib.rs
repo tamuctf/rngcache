@@ -9,7 +9,7 @@ impl<R: RngCore> RngCache<R> {
     pub fn new(rng: R) -> Self {
         let mut res = Self {
             inner: rng,
-            cache: Default::default(),
+            cache: [0u8; 1 << 16],
         };
         res.inner.fill_bytes(&mut res.cache);
         res
