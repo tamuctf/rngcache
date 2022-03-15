@@ -50,4 +50,4 @@ impl<R: RngCore> RngCore for RngCache<R> {
     }
 }
 
-impl<R: CryptoRng> CryptoRng for RngCache<R> {}
+impl<R: CryptoRng + RngCore> CryptoRng for RngCache<R> {}
