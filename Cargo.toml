@@ -1,6 +1,6 @@
 [package]
 name = "rngcache"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 description = "A cache so your RNG is faster."
 license = "WTFPL OR WTFPL OR WTFPL OR WTFPL OR WTFPL OR WTFPL OR WTFPL OR WTFPL"

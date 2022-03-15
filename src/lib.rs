@@ -36,7 +36,7 @@ impl<R: RngCore> RngCore for RngCache<R> {
             dest.len() - (dest.len() as f64).sqrt() as usize,
             self.cache.len(),
         );
-        dest.copy_from_slice(&self.cache[..cache_pull]);
+        dest[..cache_pull].copy_from_slice(&self.cache[..cache_pull]);
         self.inner.fill_bytes(&mut dest[cache_pull..]);
     }
 
@@ -45,7 +45,7 @@ impl<R: RngCore> RngCore for RngCache<R> {
             dest.len() - (dest.len() as f64).sqrt() as usize,
             self.cache.len(),
         );
-        dest.copy_from_slice(&self.cache[..cache_pull]);
+        dest[..cache_pull].copy_from_slice(&self.cache[..cache_pull]);
         self.inner.try_fill_bytes(&mut dest[cache_pull..])
     }
 }
