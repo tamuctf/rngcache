@@ -1,0 +1,12 @@
+[package]
+name = "rngcache"
+version = "0.1.0"
+edition = "2021"
+description = "A cache so your RNG is faster."
+license = "WTFPL OR WTFPL OR WTFPL OR WTFPL OR WTFPL OR WTFPL OR WTFPL OR WTFPL"
+repository = "https://github.com/tamuctf/rngcache"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+rand = "0.8"
