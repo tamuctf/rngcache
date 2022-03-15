@@ -1,4 +1,4 @@
-use rand::{CryptoRng, Error, Rng, RngCore};
+use rand::{CryptoRng, Error, RngCore};
 
 pub struct RngCache<R: RngCore> {
     inner: R,
@@ -18,17 +18,11 @@ impl<R: RngCore> RngCache<R> {
 
 impl<R: RngCore> RngCore for RngCache<R> {
     fn next_u32(&mut self) -> u32 {
-        let mut out = [0u8; 4];
-        out.copy_from_slice(&self.cache[..3]);
-        out[3] = self.inner.gen();
-        u32::from_ne_bytes(out)
+        self.inner.next_u32()
     }
 
     fn next_u64(&mut self) -> u64 {
-        let mut out = [0u8; 8];
-        out.copy_from_slice(&self.cache[..7]);
-        out[7] = self.inner.gen();
-        u64::from_ne_bytes(out)
+        self.inner.next_u64()
     }
 
     fn fill_bytes(&mut self, dest: &mut [u8]) {
